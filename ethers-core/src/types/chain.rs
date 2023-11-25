@@ -91,10 +91,6 @@ pub enum Chain {
 
     Metis = 1088,
 
-    #[strum(to_string = "xdai", serialize = "gnosis", serialize = "gnosis-chain")]
-    #[serde(alias = "xdai", alias = "gnosis", alias = "gnosis_chain")]
-    XDai = 100,
-
     Polygon = 137,
     #[strum(to_string = "mumbai", serialize = "polygon-mumbai")]
     #[serde(alias = "mumbai")]
@@ -291,7 +287,7 @@ impl Chain {
             FilecoinHyperspaceTestnet | FilecoinMainnet => 30_000,
             ScrollAlphaTestnet => 3_000,
             // Explicitly exhaustive. See NB above.
-            Morden | Ropsten | Rinkeby | Goerli | Kovan | XDai | Chiado | Sepolia | Moonbase |
+            Morden | Ropsten | Rinkeby | Goerli | Kovan | Chiado | Sepolia | Moonbase |
             MoonbeamDev | Optimism | OptimismGoerli | OptimismKovan | Poa | Sokol | Rsk |
             EmeraldTestnet | Boba | BaseGoerli | ZkSync | ZkSyncTestnet | PolygonZkEvm |
             PolygonZkEvmTestnet | Metis | LineaTestnet => return None,
@@ -354,7 +350,7 @@ impl Chain {
 
             // Unknown / not applicable, default to false for backwards compatibility
             Dev | AnvilHardhat | Morden | Ropsten | Rinkeby | Cronos | CronosTestnet | Kovan |
-            Sokol | Poa | XDai | Moonbeam | MoonbeamDev | Moonriver | Moonbase | Evmos |
+            Sokol | Poa | Moonbeam | MoonbeamDev | Moonriver | Moonbase | Evmos |
             EvmosTestnet | Chiado | Aurora | AuroraTestnet | Canto | CantoTestnet |
             ScrollAlphaTestnet | Metis => false,
         }
@@ -454,11 +450,6 @@ impl Chain {
             Moonbeam => ("https://api-moonbeam.moonscan.io/api", "https://moonbeam.moonscan.io/"),
             Moonbase => ("https://api-moonbase.moonscan.io/api", "https://moonbase.moonscan.io/"),
             Moonriver => ("https://api-moonriver.moonscan.io/api", "https://moonriver.moonscan.io"),
-
-            // blockscout API is etherscan compatible
-            XDai => {
-                ("https://blockscout.com/xdai/mainnet/api", "https://blockscout.com/xdai/mainnet")
-            }
 
             ScrollAlphaTestnet => {
                 ("https://blockscout.scroll.io/api", "https://blockscout.scroll.io/")
@@ -590,7 +581,6 @@ impl Chain {
             Boba => "BOBASCAN_API_KEY",
 
             // Explicitly exhaustive. See NB above.
-            XDai |
             ScrollAlphaTestnet |
             Metis |
             Chiado |
@@ -677,7 +667,6 @@ mod tests {
             (Mainnet, &["ethlive"]),
             (BinanceSmartChain, &["bsc", "binance-smart-chain"]),
             (BinanceSmartChainTestnet, &["bsc-testnet", "binance-smart-chain-testnet"]),
-            (XDai, &["xdai", "gnosis", "gnosis-chain"]),
             (PolygonMumbai, &["mumbai"]),
             (PolygonZkEvm, &["zkevm", "polygon-zkevm"]),
             (PolygonZkEvmTestnet, &["zkevm-testnet", "polygon-zkevm-testnet"]),
